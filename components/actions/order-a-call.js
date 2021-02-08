@@ -20,11 +20,12 @@ const OrderACall = ({ data }) => {
 
   const onSubmit = async (data) => {
     console.log('TEST: ', process.env.NEXT_PUBLIC_SANITY_PROJECT_ID)
+    console.log('TEST 2: ', process.env.NEXT_PUBLIC_SANITY_API_TOKEN)
     try {
       setVisibleLoader(true)
 
       await client(false).config({
-        token: process.env.SANITY_API_TOKEN
+        token: process.env.NEXT_PUBLIC_SANITY_API_TOKEN
       }).create({
         _type: 'message',
         full_name: data.full_name,
