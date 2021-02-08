@@ -22,7 +22,9 @@ const OrderACall = ({ data }) => {
     try {
       setVisibleLoader(true)
 
-      await client(true).create({
+      await client(false).config({
+        token: process.env.SANITY_API_TOKEN
+      }).create({
         _type: 'message',
         full_name: data.full_name,
         phone: data.phone,
