@@ -19,7 +19,7 @@ const OrderACall = ({ data }) => {
   }
 
   const onSubmit = async (data) => {
-    console.log('TEST: ', process.env.SANITY_API_TOKEN)
+    console.log('TEST: ', process.env.NEXT_PUBLIC_SANITY_PROJECT_ID)
     try {
       setVisibleLoader(true)
 
