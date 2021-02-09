@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import CustomLink from './custom-link'
+
 const Footer = ({ data }) => {
   return (
     <footer>
@@ -10,23 +12,14 @@ const Footer = ({ data }) => {
             </a>
           </Link>
 
-          <button 
-            className="navbar-toggler" 
-            type="button" 
-            data-bs-toggle="collapse" 
-            aria-controls="navbarSupportedContent" 
-            aria-expanded="false" 
-            aria-label="Toggle navigation"
-            // onClick={() => setShowMobileNav(!isShowMobileNav)}
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse">
+          <div className="navbar-collapse">
             {data.links &&
               <ul className="navbar-nav footer-nav">
                 {data.links.map((link) => (
                   <li className="nav-item" key={link._key}>
-                    <CustomLink data={link}/>
+                    <CustomLink data={link}>
+                      {link.text}
+                    </CustomLink>
                   </li>
                 ))}
               </ul>            
@@ -36,18 +29,6 @@ const Footer = ({ data }) => {
       </nav>
     </footer>
   )
-}
-
-const CustomLink = ({ data }) => {
-  const isPageLink = data._type === 'page_link' ? true : false
-
-  if (isPageLink) {
-    return (
-      <Link href="/[[...slug]]" as={`/${data.slug.current}`}>
-        <a className="nav-link">{data.text}</a>
-      </Link>
-    )
-  }
 }
 
 export default Footer
